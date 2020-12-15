@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-12-16T00:26:51 CET" name="Default suite" finished-at="2020-12-16T00:27:17 CET" duration-ms="25521">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@7a419da4]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2020-12-16T00:26:51 CET" name="Default test" finished-at="2020-12-16T00:27:17 CET" duration-ms="25521">
+      <class name="cucumberOptions.TestRunner">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:cucumberOptions.TestRunner@7a419da4]" started-at="2020-12-16T00:26:51 CET" name="setUpClass" finished-at="2020-12-16T00:26:52 CET" duration-ms="403" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@7a419da4]" started-at="2020-12-16T00:26:52 CET" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-12-16T00:27:08 CET" duration-ms="16122" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User login to unibet.com site"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Application Login]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@7a419da4]" started-at="2020-12-16T00:27:08 CET" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-12-16T00:27:17 CET" duration-ms="8933" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User didn't login to unibet.com site"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Application Login]"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Keys to send should be a not null CharSequence]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
+at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:97)
+at stepDefinitions.StepDefinition.user_enters_the_following_username_and_password(StepDefinition.java:54)
+at ✽.User enters the following username and password(file:///C:/Users/Srdjan/eclipse-workspace/mavenjava/src/test/java/features/Login.feature:12)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumberOptions.TestRunner@7a419da4]" started-at="2020-12-16T00:27:17 CET" name="tearDownClass" finished-at="2020-12-16T00:27:17 CET" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- cucumberOptions.TestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
