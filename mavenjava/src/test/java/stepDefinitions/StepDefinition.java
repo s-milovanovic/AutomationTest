@@ -19,7 +19,7 @@ import io.cucumber.java.en.When;
 //@RunWith(Cucumber.class)
 public class StepDefinition extends BasePage {
 
-	private WebDriver driver;
+	public WebDriver driver;
 
 	@Before
 	public void setup() throws Throwable {
