@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,22 +26,23 @@ public class HomePageTest extends BasePage {
 	}
 
 	@Test(dataProvider = "getData")
-	public void basePageNavigation(String username, String password) {
-		//Go to website
-		driver.get(props.getProperty("url"));
+	public void basePageNavigation(String username, String password) throws IOException {
 		
+		// Go to Web site
+		driver.get(props.getProperty("url"));
+
 		LandingPage lp = new LandingPage(driver);
 		// Assert heading message is loaded
 		System.out.println("Verifying if the heading message is loaded");
 		String logoText = lp.GetHeadingText().getText();
 		Assert.assertEquals(logoText, "By Players, For Players");
-		
-		//clear values from username and password fields is any;
-		if (!lp.GetEmailInputField().getAttribute("value").isEmpty() 
+
+		// clear values from username and password fields is any;
+		if (!lp.GetEmailInputField().getAttribute("value").isEmpty()
 				|| !lp.GetPasswordInputField().getAttribute("value").isEmpty()) {
 			lp.GetEmailInputField().clear();
 			lp.GetEmailInputField().clear();
-			}
+		}
 
 		System.out.println("inserting username");
 		System.out.println(String.format(
@@ -51,17 +53,18 @@ public class HomePageTest extends BasePage {
 		// click on login button
 		System.out.println("Clicking on login submit button");
 		lp.GetLoginSubmitButton().click();
-		//Assert user is logged in successfully
+		// Assert user is logged in successfully
+		System.out.println("Verifying if the user is successfully logged in");
 		LoginPage lnPage = new LoginPage(driver);
 		lnPage.GetVerifyButton().click();
 		lnPage.GetAccountButton().click();
 		String accountName = lnPage.GetAccountName().getText();
 		Assert.assertEquals(accountName, "john doe");
-		//logout from the site
+		// logout from the site
 		lnPage.GetLogoutButton().click();
-		}
+	}
 
-	@AfterClass
+	@AfterTest
 	public void tearDown() {
 		driver.close();
 	}
@@ -69,31 +72,29 @@ public class HomePageTest extends BasePage {
 	@DataProvider
 	public Object[][] getData() throws IOException {
 		/*
-		 return new Object[][] {{"Srdjan", "pass" , "some dummy text"},
-		 {"john.doe.igame@gmail.com", "pass", "some other dummy text"}};
+		 * return new Object[][] {{"Srdjan", "pass" , "some dummy text"},
+		 * {"john.doe.igame@gmail.com", "pass", "some other dummy text"}};
 		 */
-		String file = System.getProperty("user.dir") +
-				 "//src//main//java//resources//Book.xlsx";
+		String file = System.getProperty("user.dir") + "//src//main//java//resources//Book.xlsx";
 		ReadDataFromExcel rd = new ReadDataFromExcel();
 		String[][] userData = rd.ReadExcelFile(file);
-		//ArrayList<String> userData2 = rd.ReadExcelFile("User2");
+		// ArrayList<String> userData2 = rd.ReadExcelFile("User2");
 
+		/*
+		 * Object[][] data = new Object[2][2]; // 0th row data[0][0] =
+		 * "srdjan";//userData1.get(1); data[0][1] = "pass";//userData1.get(2);
+		 * 
+		 * // 1st row data[1][0] = "john";//userData2.get(1); data[1][1] =
+		 * "pass";//userData2.get(2);
+		 * 
+		 * return data;
+		 */
 
-		/*Object[][] data = new Object[2][2];
-		// 0th row
-		data[0][0] = "srdjan";//userData1.get(1);
-		data[0][1] = "pass";//userData1.get(2);
+		/*
+		 * ReadDataFromExcel rd = new ReadDataFromExcel(); Object[][] data = new
+		 * Object[2][2]; return data;
+		 */
 
-		// 1st row
-		data[1][0] = "john";//userData2.get(1);
-		data[1][1] = "pass";//userData2.get(2);
-
-		return data;*/
-		
-		/*ReadDataFromExcel rd = new ReadDataFromExcel();
-		Object[][] data = new Object[2][2];
-		return data;*/
-		
-		return userData;		
+		return userData;
 	}
 }
